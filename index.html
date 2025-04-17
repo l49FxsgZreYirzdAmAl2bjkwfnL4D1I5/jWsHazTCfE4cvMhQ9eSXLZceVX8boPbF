@@ -2,14 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Final Trial</title>
+  <title>THE FINAL TRIAL | Roblox Event</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Countdown to the ultimate Roblox experience. Saturday at 7PM.">
+  <!-- Discord Embed Meta Tags -->
+  <meta property="og:title" content="THE FINAL TRIAL | Roblox Event">
+  <meta property="og:description" content="Countdown to the ultimate Roblox experience. Saturday at 7PM.">
+  <meta property="og:image" content="https://media.tenor.com/6gE9qgX9J3EAAAAd/cat-cute.gif">
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0d0d0d;
-      --text: #f1f1f1;
-      --accent: #ff4d4d;
-      --subtle: #888;
+      --bg: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%);
+      --text: #ffffff;
+      --accent: #ff3366;
+      --accent-glow: 0 0 15px rgba(255, 51, 102, 0.7);
+      --subtle: rgba(255, 255, 255, 0.6);
+      --card-bg: rgba(15, 15, 35, 0.7);
+      --card-border: rgba(255, 255, 255, 0.1);
     }
 
     * {
@@ -21,70 +34,221 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Rajdhani', sans-serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100dvh;
+      min-height: 100dvh;
       text-align: center;
       padding: 2rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.02)" width="50" height="50" x="0" y="0"/></svg>') repeat;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .logo {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-shadow: var(--accent-glow);
     }
 
     h1 {
-      font-size: 3rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4.5rem;
       font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #ffffff, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
     }
 
-    p {
-      font-size: 1.2rem;
+    .subtitle {
+      font-size: 1.5rem;
       color: var(--subtle);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      font-weight: 300;
+      max-width: 600px;
+      line-height: 1.6;
     }
 
-    #timer {
-      font-size: 2rem;
-      font-weight: 600;
+    .countdown-container {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
       padding: 1rem 2rem;
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 77, 77, 0.1);
+      min-width: 120px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
       color: var(--accent);
-      min-width: 280px;
+      text-shadow: var(--accent-glow);
     }
 
-    @media (max-width: 500px) {
-      h1 { font-size: 2.2rem; }
-      #timer { font-size: 1.5rem; }
+    .countdown-label {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--subtle);
+    }
+
+    .event-details {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 600px;
+      margin-bottom: 3rem;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-details h2 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-shadow: var(--accent-glow);
+    }
+
+    .event-details p {
+      color: var(--subtle);
+      line-height: 1.6;
+    }
+
+    .hidden-gif {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    .secret-button {
+      background: transparent;
+      border: none;
+      color: var(--subtle);
+      font-size: 0.8rem;
+      margin-top: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .secret-button:hover {
+      color: var(--accent);
+      text-shadow: var(--accent-glow);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
+      
+      .countdown-container {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .countdown-value {
+        font-size: 2.5rem;
+        padding: 0.8rem 1.5rem;
+        min-width: 90px;
+      }
+      
+      .logo {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 2rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Hidden embed content for Discord -->
+  <div class="hidden-gif">
+    <img src="https://media.tenor.com/6gE9qgX9J3EAAAAd/cat-cute.gif" alt="Cute cat exercising">
+  </div>
 
-  <h1>The Final Trial</h1>
-  <p>Saturday. 7PM. No details. Just be ready.</p>
-  <div id="timer">Calculating time...</div>
+  <div class="logo">FINAL TRIAL</div>
+
+  <h1>THE FINAL TRIAL</h1>
+  <p class="subtitle">Saturday. 7PM. No details. Just be ready.</p>
+
+  <div class="countdown-container">
+    <div class="countdown-item">
+      <div id="days" class="countdown-value">00</div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-item">
+      <div id="hours" class="countdown-value">00</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-item">
+      <div id="minutes" class="countdown-value">00</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-item">
+      <div id="seconds" class="countdown-value">00</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+
+  <div class="event-details">
+    <h2>THE ULTIMATE CHALLENGE AWAITS</h2>
+    <p>Prepare yourself for an experience that will test your limits. The Final Trial is coming to Roblox, and only the most dedicated will survive.</p>
+  </div>
+
+  <button class="secret-button" onclick="revealSecret()">Click if you know</button>
 
   <script>
-    const timerEl = document.getElementById('timer');
-
+    // Countdown timer
     function getNextSaturdayAt7PM() {
       const now = new Date();
-      const day = now.getDay(); // 0 (Sun) - 6 (Sat)
+      const day = now.getDay();
       const daysUntilSaturday = (6 - day + 7) % 7 || 7;
 
       const nextSaturday = new Date(now);
       nextSaturday.setDate(now.getDate() + daysUntilSaturday);
-      nextSaturday.setHours(19, 0, 0, 0); // 7PM sharp
+      nextSaturday.setHours(19, 0, 0, 0);
 
       return nextSaturday;
-    }
-
-    function formatTime(t) {
-      return t.toString().padStart(2, '0');
     }
 
     function updateCountdown() {
@@ -93,7 +257,10 @@
       const diff = target - now;
 
       if (diff <= 0) {
-        timerEl.textContent = "It's time.";
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = 'NOW';
         return;
       }
 
@@ -103,13 +270,44 @@
       const minutes = Math.floor((secs % 3600) / 60);
       const seconds = secs % 60;
 
-      timerEl.textContent = 
-        `${days}d ${formatTime(hours)}h ${formatTime(minutes)}m ${formatTime(seconds)}s`;
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    // Easter egg function
+    function revealSecret() {
+      const gifUrl = 'https://media.tenor.com/6gE9qgX9J3EAAAAd/cat-cute.gif';
+      const modal = document.createElement('div');
+      modal.style.position = 'fixed';
+      modal.style.top = '0';
+      modal.style.left = '0';
+      modal.style.width = '100%';
+      modal.style.height = '100%';
+      modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
+      modal.style.display = 'flex';
+      modal.style.justifyContent = 'center';
+      modal.style.alignItems = 'center';
+      modal.style.zIndex = '1000';
+      
+      const img = document.createElement('img');
+      img.src = gifUrl;
+      img.style.maxWidth = '90%';
+      img.style.maxHeight = '90%';
+      img.style.borderRadius = '10px';
+      img.style.boxShadow = '0 0 30px rgba(255, 51, 102, 0.5)';
+      
+      modal.appendChild(img);
+      modal.onclick = function() {
+        document.body.removeChild(modal);
+      };
+      
+      document.body.appendChild(modal);
     }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
   </script>
-
 </body>
 </html>
