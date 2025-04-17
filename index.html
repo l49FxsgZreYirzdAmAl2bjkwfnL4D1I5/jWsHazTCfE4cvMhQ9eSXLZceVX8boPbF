@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Final Trial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --text: #f1f1f1;
+      --accent: #ff4d4d;
+      --subtle: #888;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100dvh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: var(--subtle);
+      margin-bottom: 2rem;
+    }
+
+    #timer {
+      font-size: 2rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 77, 77, 0.1);
+      color: var(--accent);
+      min-width: 280px;
+    }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 2.2rem; }
+      #timer { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>The Final Trial</h1>
+  <p>Saturday. 7PM. No details. Just be ready.</p>
+  <div id="timer">Calculating time...</div>
+
+  <script>
+    const timerEl = document.getElementById('timer');
+
+    function getNextSaturdayAt7PM() {
+      const now = new Date();
+      const day = now.getDay(); // 0 (Sun) - 6 (Sat)
+      const daysUntilSaturday = (6 - day + 7) % 7 || 7;
+
+      const nextSaturday = new Date(now);
+      nextSaturday.setDate(now.getDate() + daysUntilSaturday);
+      nextSaturday.setHours(19, 0, 0, 0); // 7PM sharp
+
+      return nextSaturday;
+    }
+
+    function formatTime(t) {
+      return t.toString().padStart(2, '0');
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const target = getNextSaturdayAt7PM();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        timerEl.textContent = "It's time.";
+        return;
+      }
+
+      const secs = Math.floor(diff / 1000);
+      const days = Math.floor(secs / 86400);
+      const hours = Math.floor((secs % 86400) / 3600);
+      const minutes = Math.floor((secs % 3600) / 60);
+      const seconds = secs % 60;
+
+      timerEl.textContent = 
+        `${days}d ${formatTime(hours)}h ${formatTime(minutes)}m ${formatTime(seconds)}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+</body>
+</html>
