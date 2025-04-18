@@ -8,12 +8,12 @@
   <!-- Discord Embed Meta Tags -->
   <meta property="og:title" content="THE FINAL TRIAL | JAF Event">
   <meta property="og:description" content="Countdown to the ultimate JAF experience. Saturday at 7PM GMT+3.">
-  <meta property="og:image" content="https://media.tenor.com/6gE9qgX9J3EAAAAd/cat-cute.gif">
-  <meta property="og:url" content="https://yourdomain.com">
+  <meta property="og:image" content="https://preview.redd.it/does-anyone-other-than-me-know-where-this-cat-is-from-lol-v0-img24gu05lfb1.jpg?width=1080&crop=smart&auto=webp&s=c3f0a1639fc3a21e04864423c108302d5a36ff8b">
+  <meta property="og:url" content="https://dicecrazy.store">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet>
   <style>
     :root {
       --bg: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%);
@@ -138,6 +138,15 @@
       color: var(--subtle);
     }
 
+    .event-image {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 12px;
+      margin: 2rem 0;
+      border: 2px solid var(--accent);
+      box-shadow: var(--accent-glow);
+    }
+
     .event-details {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -154,7 +163,7 @@
       border: 1px solid var(--shame-border);
       border-radius: 12px;
       padding: 1.5rem;
-      max-width: 600px;
+      max-width: 800px;
       margin-bottom: 2rem;
       backdrop-filter: blur(5px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -163,37 +172,36 @@
 
     .hall-of-shame h2 {
       font-family: 'Orbitron', sans-serif;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       color: var(--accent);
       text-shadow: var(--accent-glow);
+      font-size: 2rem;
     }
 
     .shame-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.8rem;
     }
 
     .exploiter {
       background: rgba(255, 51, 102, 0.2);
       border-radius: 20px;
-      padding: 0.5rem 1rem;
+      padding: 0.7rem 1rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .exploiter:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
     }
 
     .clown-emoji {
-      font-size: 1.2rem;
-    }
-
-    .hidden-gif {
-      position: absolute;
-      width: 0;
-      height: 0;
-      overflow: hidden;
-      opacity: 0;
+      font-size: 1.3rem;
+      filter: drop-shadow(0 0 3px rgba(255, 51, 102, 0.7));
     }
 
     @media (max-width: 768px) {
@@ -220,23 +228,23 @@
       }
       
       .shame-list {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+      }
+      
+      .event-image {
+        max-width: 300px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Hidden embed content for Discord -->
-  <div class="hidden-gif">
-    <img src="https://media.tenor.com/6gE9qgX9J3EAAAAd/cat-cute.gif" alt="Cute cat exercising">
-  </div>
-
   <div class="logo">FINAL TRIAL</div>
 
   <h1>THE FINAL TRIAL</h1>
   <p class="subtitle">Saturday. 7PM. No details. Just be ready.</p>
   <p class="timezone-note">(GMT+3 Timezone)</p>
+
+  <img src="https://preview.redd.it/does-anyone-other-than-me-know-where-this-cat-is-from-lol-v0-img24gu05lfb1.jpg?width=1080&crop=smart&auto=webp&s=c3f0a1639fc3a21e04864423c108302d5a36ff8b" alt="Event Preview" class="event-image">
 
   <div class="countdown-container">
     <div class="countdown-item">
@@ -263,7 +271,7 @@
   </div>
 
   <div class="hall-of-shame">
-    <h2>HALL OF SHAME 🤡</h2>
+    <h2>HALL OF SHAME <span class="clown-emoji">🤡</span></h2>
     <div class="shame-list" id="exploiters-list">
       <!-- Exploiters will be added here by JavaScript -->
     </div>
@@ -323,9 +331,37 @@
 
     // Hall of Shame - List of exploiters
     const exploiters = [
-      "Xavier73539727",
-      "greetyouhimeidono2",
+      "amfrom_german",
       "2043erdan",
+      "am_tbs",
+      "llove_ttl",
+      "amfrom_filipino",
+      "flappy_bird85",
+      "lam_superman1",
+      "entity_prisonlife",
+      "shoto_playgo",
+      "2010erdan",
+      "2021erdan",
+      "2032erdan",
+      "amir_delivery153",
+      "shotoako_playfisch",
+      "amchina3",
+      "vault_guardian4",
+      "epic_war25",
+      "vault_guardian7",
+      "2026erdan",
+      "player_183054",
+      "player_28366",
+      "erdancasabuena5",
+      "ambigfan_digito7",
+      "2040erdan",
+      "1011erdan",
+      "1000erdan",
+      "2022erdan",
+      "2023erdan",
+      "2020erdan",
+      "shoto_playdandy",
+      "dandypro43"
     ];
 
     function displayExploiters() {
@@ -341,21 +377,6 @@
         listElement.appendChild(exploiterElement);
       });
     }
-
-    /* 
-    HOW TO ADD MORE EXPLOITERS:
-    1. Simply add more usernames to the 'exploiters' array above
-    Example: 
-    const exploiters = [
-      "Xavier73539727",
-      "greetyouhimeidono2",
-      "2043erdan",
-      "NewExploiter",  // <-- Add new ones here
-      "AnotherCheater" // <-- And here
-    ];
-    
-    2. The list will automatically update with clown emojis
-    */
 
     // Initialize everything
     setInterval(updateCountdown, 1000);
