@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>THE FINAL TRIAL | Roblox Event</title>
+  <title>THE FINAL TRIAL | JAF Event</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Countdown to the ultimate Roblox experience. Saturday at 7PM.">
+  <meta name="description" content="Countdown to the ultimate JAF experience. Saturday at 7PM GMT+3.">
   <!-- Discord Embed Meta Tags -->
-  <meta property="og:title" content="THE FINAL TRIAL | Easter Event">
-  <meta property="og:description" content="Countdown to the ultimate Roblox experience. Saturday at 7PM.">
+  <meta property="og:title" content="THE FINAL TRIAL | JAF Event">
+  <meta property="og:description" content="Countdown to the ultimate JAF experience. Saturday at 7PM GMT+3.">
   <meta property="og:image" content="https://media.tenor.com/6gE9qgX9J3EAAAAd/cat-cute.gif">
-  <meta property="og:url" content="https://dicecrazy.store">
+  <meta property="og:url" content="https://yourdomain.com">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,8 @@
       --subtle: rgba(255, 255, 255, 0.6);
       --card-bg: rgba(15, 15, 35, 0.7);
       --card-border: rgba(255, 255, 255, 0.1);
+      --shame-bg: rgba(255, 51, 102, 0.1);
+      --shame-border: rgba(255, 51, 102, 0.3);
     }
 
     * {
@@ -94,6 +96,13 @@
       line-height: 1.6;
     }
 
+    .timezone-note {
+      font-size: 0.9rem;
+      color: var(--subtle);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
     .countdown-container {
       display: flex;
       gap: 1.5rem;
@@ -140,16 +149,43 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    .event-details h2 {
+    .hall-of-shame {
+      background: var(--shame-bg);
+      border: 1px solid var(--shame-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      width: 100%;
+    }
+
+    .hall-of-shame h2 {
       font-family: 'Orbitron', sans-serif;
       margin-bottom: 1rem;
       color: var(--accent);
       text-shadow: var(--accent-glow);
     }
 
-    .event-details p {
-      color: var(--subtle);
-      line-height: 1.6;
+    .shame-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .exploiter {
+      background: rgba(255, 51, 102, 0.2);
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .clown-emoji {
+      font-size: 1.2rem;
     }
 
     .hidden-gif {
@@ -158,21 +194,6 @@
       height: 0;
       overflow: hidden;
       opacity: 0;
-    }
-
-    .secret-button {
-      background: transparent;
-      border: none;
-      color: var(--subtle);
-      font-size: 0.8rem;
-      margin-top: 2rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .secret-button:hover {
-      color: var(--accent);
-      text-shadow: var(--accent-glow);
     }
 
     @media (max-width: 768px) {
@@ -197,6 +218,11 @@
         left: auto;
         margin-bottom: 2rem;
       }
+      
+      .shame-list {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -210,6 +236,7 @@
 
   <h1>THE FINAL TRIAL</h1>
   <p class="subtitle">Saturday. 7PM. No details. Just be ready.</p>
+  <p class="timezone-note">(GMT+3 Timezone)</p>
 
   <div class="countdown-container">
     <div class="countdown-item">
@@ -232,28 +259,46 @@
 
   <div class="event-details">
     <h2>THE ULTIMATE CHALLENGE AWAITS</h2>
-    <p>Prepare yourself for an experience that will test your limits. The Final Trial is coming, and only the most dedicated will survive.</p>
+    <p>Prepare yourself for an experience that will test your limits. The Final Trial is coming to JAF, and only the most dedicated will survive.</p>
   </div>
 
-  <button class="secret-button" onclick="revealSecret()">useless button that does nothing</button>
+  <div class="hall-of-shame">
+    <h2>HALL OF SHAME 🤡</h2>
+    <div class="shame-list" id="exploiters-list">
+      <!-- Exploiters will be added here by JavaScript -->
+    </div>
+  </div>
 
   <script>
-    // Countdown timer
-    function getNextSaturdayAt7PM() {
+    // Countdown timer for GMT+3 (UTC+3)
+    function getNextSaturdayAt7PMGMT3() {
       const now = new Date();
-      const day = now.getDay();
+      
+      // Convert local time to GMT+3
+      const localTime = now.getTime();
+      const localOffset = now.getTimezoneOffset() * 60000;
+      const utc = localTime + localOffset;
+      const gmt3Time = utc + (3 * 3600000); // GMT+3 offset
+      const nowGMT3 = new Date(gmt3Time);
+      
+      const day = nowGMT3.getDay(); // 0 (Sun) to 6 (Sat)
       const daysUntilSaturday = (6 - day + 7) % 7 || 7;
-
-      const nextSaturday = new Date(now);
-      nextSaturday.setDate(now.getDate() + daysUntilSaturday);
-      nextSaturday.setHours(19, 0, 0, 0);
-
-      return nextSaturday;
+      
+      // Create target date in GMT+3
+      const targetGMT3 = new Date(nowGMT3);
+      targetGMT3.setDate(nowGMT3.getDate() + daysUntilSaturday);
+      targetGMT3.setHours(19, 0, 0, 0); // 7PM GMT+3
+      
+      // Convert back to local time for countdown calculation
+      const targetUTC = new Date(targetGMT3.getTime() - (3 * 3600000));
+      const targetLocal = new Date(targetUTC.getTime() - localOffset);
+      
+      return targetLocal;
     }
 
     function updateCountdown() {
       const now = new Date();
-      const target = getNextSaturdayAt7PM();
+      const target = getNextSaturdayAt7PMGMT3();
       const diff = target - now;
 
       if (diff <= 0) {
@@ -276,38 +321,46 @@
       document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
     }
 
-    // Easter egg function
-    function revealSecret() {
-      const gifUrl = 'https://media.tenor.com/6gE9qgX9J3EAAAAd/cat-cute.gif';
-      const modal = document.createElement('div');
-      modal.style.position = 'fixed';
-      modal.style.top = '0';
-      modal.style.left = '0';
-      modal.style.width = '100%';
-      modal.style.height = '100%';
-      modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
-      modal.style.display = 'flex';
-      modal.style.justifyContent = 'center';
-      modal.style.alignItems = 'center';
-      modal.style.zIndex = '1000';
+    // Hall of Shame - List of exploiters
+    const exploiters = [
+      "Xavier73539727",
+      "greetyouhimeidono2",
+      "2043erdan",
+    ];
+
+    function displayExploiters() {
+      const listElement = document.getElementById('exploiters-list');
       
-      const img = document.createElement('img');
-      img.src = gifUrl;
-      img.style.maxWidth = '90%';
-      img.style.maxHeight = '90%';
-      img.style.borderRadius = '10px';
-      img.style.boxShadow = '0 0 30px rgba(255, 51, 102, 0.5)';
-      
-      modal.appendChild(img);
-      modal.onclick = function() {
-        document.body.removeChild(modal);
-      };
-      
-      document.body.appendChild(modal);
+      exploiters.forEach(exploiter => {
+        const exploiterElement = document.createElement('div');
+        exploiterElement.className = 'exploiter';
+        exploiterElement.innerHTML = `
+          <span class="clown-emoji">🤡</span>
+          <span>${exploiter}</span>
+        `;
+        listElement.appendChild(exploiterElement);
+      });
     }
 
+    /* 
+    HOW TO ADD MORE EXPLOITERS:
+    1. Simply add more usernames to the 'exploiters' array above
+    Example: 
+    const exploiters = [
+      "Xavier73539727",
+      "greetyouhimeidono2",
+      "2043erdan",
+      "NewExploiter",  // <-- Add new ones here
+      "AnotherCheater" // <-- And here
+    ];
+    
+    2. The list will automatically update with clown emojis
+    */
+
+    // Initialize everything
     setInterval(updateCountdown, 1000);
     updateCountdown();
+    displayExploiters();
   </script>
 </body>
 </html>
