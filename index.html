@@ -1,570 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>THE FINAL TRIAL | JAF Event</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Countdown to the ultimate JAF experience. Saturday at 7PM GMT+3.">
-  <!-- Discord Embed Meta Tags -->
-  <meta property="og:title" content="THE FINAL TRIAL | JAF Event">
-  <meta property="og:description" content="Countdown to the ultimate JAF experience. Saturday at 7PM GMT+3.">
-  <meta property="og:image" content="https://preview.redd.it/does-anyone-other-than-me-know-where-this-cat-is-from-lol-v0-img24gu05lfb1.jpg?width=1080&crop=smart&auto=webp&s=c3f0a1639fc3a21e04864423c108302d5a36ff8b">
-  <meta property="og:url" content="https://yourdomain.com">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%);
-      --text: #ffffff;
-      --accent: #ff3366;
-      --accent-glow: 0 0 15px rgba(255, 51, 102, 0.7);
-      --subtle: rgba(255, 255, 255, 0.6);
-      --card-bg: rgba(15, 15, 35, 0.7);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --shame-bg: rgba(255, 51, 102, 0.1);
-      --shame-border: rgba(255, 51, 102, 0.3);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Rajdhani', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100dvh;
-      text-align: center;
-      padding: 2rem;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.02)" width="50" height="50" x="0" y="0"/></svg>') repeat;
-  opacity: 0.3;
-  z-index: -1;
-}
-
-    .logo {
-      position: absolute;
-      top: 2rem;
-      left: 2rem;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-shadow: var(--accent-glow);
-    }
-
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 4.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: linear-gradient(to right, #ffffff, var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
-    }
-
-    .subtitle {
-      font-size: 1.5rem;
-      color: var(--subtle);
-      margin-bottom: 3rem;
-      font-weight: 300;
-      max-width: 600px;
-      line-height: 1.6;
-    }
-
-    .timezone-note {
-      font-size: 0.9rem;
-      color: var(--subtle);
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-
-    .countdown-container {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .countdown-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .countdown-value {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 4rem;
-      font-weight: 700;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 1rem 2rem;
-      min-width: 120px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(5px);
-      color: var(--accent);
-      text-shadow: var(--accent-glow);
-    }
-
-    .countdown-label {
-      margin-top: 0.5rem;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--subtle);
-    }
-
-    .event-image {
-      max-width: 400px;
-      width: 100%;
-      border-radius: 12px;
-      margin: 2rem 0;
-      border: 2px solid var(--accent);
-      box-shadow: var(--accent-glow);
-    }
-
-    .event-details {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 2rem;
-      max-width: 600px;
-      margin-bottom: 3rem;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .hall-of-shame {
-      background: var(--shame-bg);
-      border: 1px solid var(--shame-border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      max-width: 800px;
-      margin-bottom: 2rem;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      width: 100%;
-    }
-
-    .hall-of-shame h2 {
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 1.5rem;
-      color: var(--accent);
-      text-shadow: var(--accent-glow);
-      font-size: 2rem;
-    }
-
-    .shame-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.8rem;
-    }
-
-    .exploiter {
-      background: rgba(255, 51, 102, 0.2);
-      border-radius: 20px;
-      padding: 0.7rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .exploiter:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
-    }
-
-    .clown-emoji {
-      font-size: 1.3rem;
-      filter: drop-shadow(0 0 3px rgba(255, 51, 102, 0.7));
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 3rem;
-      }
-      
-      .countdown-container {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      .countdown-value {
-        font-size: 2.5rem;
-        padding: 0.8rem 1.5rem;
-        min-width: 90px;
-      }
-      
-      .logo {
-        position: relative;
-        top: auto;
-        left: auto;
-        margin-bottom: 2rem;
-      }
-      
-      .shame-list {
-        grid-template-columns: 1fr;
-      }
-      
-      .event-image {
-        max-width: 300px;
-      }
-    }
-  </style>
+	<meta charset="utf-8" />
+	<title>Idiot</title>
+	
+	<!--
+	    Original Flash Movie: http://youareanidiot.org/
+	    Audio from http://shane-o.com/sound-drops/163-idiot-drop
+	    This implementation: Rodney Rehm - http://rodneyrehm.de/en/
+	-->
+	
+	<style>
+	    body {
+	        margin: 0; 
+	        padding: 0; 
+	        font-family: Comic Sans;
+	        font-weight: bold;
+	        font-size: 16px;
+            color: #CCC;
+	        background: white;
+	        -webkit-transition: background-color 0.05s ease-in 0s,
+	                            color 0.05s ease-in 0s;
+	                transition: background-color 0.05s ease-in 0s,
+	                            color 0.05s ease-in 0s;
+	    }
+	    
+	    .browser-fail .happy {
+	        display: none;
+	    }
+	    
+	    .no-track {
+	        color: black;
+	    }
+	    
+	    #idiot-text,
+	    #idiot-face {
+	        display: block;
+            padding: 1em;
+	        text-align: center;
+	        font-size: 4em;
+	    }
+	    
+	    #idiot-text span {
+	        white-space: nowrap;
+	    }
+	    
+	    #idiot-face {
+	        padding: 0;
+	        font-size: 10em;
+	        color: black;
+	    }
+	    
+	    .visited {
+	        color: #666;
+	    }
+	    
+	    .active {
+	        color: #336699;
+	    }
+	    
+	    .inverted {
+	        background: black;
+	        color: #333;
+	    }
+	    
+	    .inverted.no-track {
+	        color: white;
+	    }
+	    
+	    .inverted .visited {
+	        color: #AAA;
+	    }
+	    
+	    .inverted .active {
+	        color: #6699CC;
+	    }
+	    
+	    .inverted #idiot-face {
+	        color: white;
+	    }
+	    
+        @media only screen and (min-width: 1000px) {
+	        body {
+	            width: 1000px;
+	            margin: 0 auto;
+	        }
+	    }
+	    
+        @media only screen and (max-width: 400px) {
+            body {
+                font-size: 10px;
+            }
+        }
+	</style>
 </head>
 <body>
-  <div class="logo">FINAL TRIAL</div>
+    
+    <output id="idiot-text">
+        <span id ="idiot-cue-1">you</span>
+        <span id ="idiot-cue-2">are</span>
+        <span id ="idiot-cue-3">an</span>
+        <span id ="idiot-cue-4">idiot</span>
+        <span id ="idiot-cue-5">ah</span>
+        <span id ="idiot-cue-6">haha</span>
+        <span id ="idiot-cue-7">ha ha ha</span>
+        <span id ="idiot-cue-8">aha ha</span>
+        <span id ="idiot-cue-9">ha ha</span>
+        <span id ="idiot-cue-10">ha</span>
+    </output>
+    
+    <output id="idiot-face">
+        <span class="smiley happy">☺</span>
+        <span class="smiley sad">☹</span>
+        <span class="smiley happy">☺</span>
+    </output>
+    
+    <audio id="idiot-audio" volume="0.2" auto-play="off" lo-op="true">
+        <source src="audio/idiot.mp3" type="audio/mp3">
+        <source src="audio/idiot.ogg" type="audio/ogg">
+        <source src="audio/idiot.wav" type="audio/wav">
+    </audio>
+    
+    <script>
+        (function() {
+            "use strict";
+            
+            var output = document.getElementById('idiot-text');
+            var audio = document.getElementById('idiot-audio');
+            
+            if (!window.Audio) {
+                output.innerHTML = 'Your Browser Is An Idiot!';
+                document.body.className = 'browser-fail';
+                console.error('Audio not supported');
+                return;
+            }
 
-  <h1>THE FINAL TRIAL</h1>
-  <p class="subtitle">Saturday. 7PM. No details. Just be ready.</p>
-  <p class="timezone-note">(GMT+3 Timezone)</p>
+            if (Audio.prototype.addTextTrack) {
+                var track = audio.addTextTrack('metadata');
+                var cues = [
+                    {start: 0.040, stop: 0.474, id: 'idiot-cue-1', text: "you"},
+                    {start: 0.580, stop: 0.860, id: 'idiot-cue-2', text: "are"},
+                    {start: 0.860, stop: 1.013, id: 'idiot-cue-3', text: "an"},
+                    {start: 1.069, stop: 1.672, id: 'idiot-cue-4', text: "idiot"},
+                    {start: 1.945, stop: 2.112, id: 'idiot-cue-5', text: "ah"},
+                    {start: 2.234, stop: 2.566, id: 'idiot-cue-6', text: "haha"},
+                    {start: 2.593, stop: 3.131, id: 'idiot-cue-7', text: "ha ha ha"},
+                    {start: 3.207, stop: 3.802, id: 'idiot-cue-8', text: "aha ha"},
+                    {start: 3.871, stop: 4.397, id: 'idiot-cue-9', text: "ha ha"},
+                    {start: 4.494, stop: 4.883, id: 'idiot-cue-10', text: "ha"}
+                ];
 
-  <img src="https://preview.redd.it/does-anyone-other-than-me-know-where-this-cat-is-from-lol-v0-img24gu05lfb1.jpg?width=1080&crop=smart&auto=webp&s=c3f0a1639fc3a21e04864423c108302d5a36ff8b" alt="Event Preview" class="event-image">
+                cues.forEach(function(cue) {
+                    track.addCue(new TextTrackCue(cue.start, cue.stop, cue.id));
+                });
 
-  <div class="countdown-container">
-    <div class="countdown-item">
-      <div id="days" class="countdown-value">00</div>
-      <div class="countdown-label">Days</div>
-    </div>
-    <div class="countdown-item">
-      <div id="hours" class="countdown-value">00</div>
-      <div class="countdown-label">Hours</div>
-    </div>
-    <div class="countdown-item">
-      <div id="minutes" class="countdown-value">00</div>
-      <div class="countdown-label">Minutes</div>
-    </div>
-    <div class="countdown-item">
-      <div id="seconds" class="countdown-value">00</div>
-      <div class="countdown-label">Seconds</div>
-    </div>
-  </div>
+                track.addEventListener('cuechange', function(event) {
+                    if (!track.activeCues.length) {
+                        return;
+                    }
 
-  <div class="event-details">
-    <h2>THE ULTIMATE CHALLENGE AWAITS</h2>
-    <p>Prepare yourself for an experience that will test your limits. The Final Trial is coming to JAF, and only the most dedicated will survive.</p>
-  </div>
+                    // TODO: improve this
+                    [].forEach.call(output.querySelectorAll('.active'), function(node) {
+                        node.classList.remove('active');
+                    });
+                    
+                    var id = track.activeCues[0].text;
+                    document.getElementById(id).className = 'visited active';
+                    document.body.offsetTop;
+                });
+            } else {
+                document.body.classList.add('no-track');
+                console.error('Audio.prototype.addTextTrack() not supported');
+            }
+            
+            audio.addEventListener('play', function(event) {
+                [].forEach.call(output.childNodes, function(node) {
+                    node.className = '';
+                });
+            });
 
-  <div class="hall-of-shame">
-    <h2>HALL OF SHAME <span class="clown-emoji">🤡</span></h2>
-    <div class="shame-list" id="exploiters-list">
-      <!-- Exploiters will be added here by JavaScript -->
-    </div>
-  </div>
+            // loop prevents ended event (in Chrome), but wee need something to reset the canvas
+            // audio.loop = true;
+            audio.addEventListener('ended', function(event) {
+                setTimeout(function() {
+                    audio.currentTime = 0;
+                    audio.play();
+                }, 200);
+            });
 
-  <script>
-    // Countdown timer for GMT+3 (UTC+3)
-    function getNextSaturdayAt7PMGMT3() {
-      const now = new Date();
-      
-      // Convert local time to GMT+3
-      const localTime = now.getTime();
-      const localOffset = now.getTimezoneOffset() * 60000;
-      const utc = localTime + localOffset;
-      const gmt3Time = utc + (3 * 3600000); // GMT+3 offset
-      const nowGMT3 = new Date(gmt3Time);
-      
-      const day = nowGMT3.getDay(); // 0 (Sun) to 6 (Sat)
-      const daysUntilSaturday = (6 - day + 7) % 7 || 7;
-      
-      // Create target date in GMT+3
-      const targetGMT3 = new Date(nowGMT3);
-      targetGMT3.setDate(nowGMT3.getDate() + daysUntilSaturday);
-      targetGMT3.setHours(19, 0, 0, 0); // 7PM GMT+3
-      
-      // Convert back to local time for countdown calculation
-      const targetUTC = new Date(targetGMT3.getTime() - (3 * 3600000));
-      const targetLocal = new Date(targetUTC.getTime() - localOffset);
-      
-      return targetLocal;
-    }
+            document.addEventListener('keydown', toggle);
+            document.addEventListener('touchend', toggle);
+            document.addEventListener('mouseup', toggle);
+            
+            function toggle(event) {
+                if (event.type === 'keydown' && event.keyCode != 32) {
+                    return;
+                }
+                
+                event.preventDefault();
+                event.stopPropagation();
+                
+                audio[audio.paused ? 'play' : 'pause']();
+            }
+            
+            function invertBackground() {
+                if (!audio.paused) {
+                    document.body.classList.toggle('inverted');
+                }
+                
+                return setTimeout(invertBackground, 500);
+            }
+            
+            audio.play();
+            invertBackground();
 
-    function updateCountdown() {
-      const now = new Date();
-      const target = getNextSaturdayAt7PMGMT3();
-      const diff = target - now;
+        })();
+    </script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      if (diff <= 0) {
-        document.getElementById('days').textContent = '00';
-        document.getElementById('hours').textContent = '00';
-        document.getElementById('minutes').textContent = '00';
-        document.getElementById('seconds').textContent = 'NOW';
-        return;
-      }
+      ga('create', 'UA-8922143-5', 'rodneyrehm.github.io');
+      ga('send', 'pageview');
 
-      const secs = Math.floor(diff / 1000);
-      const days = Math.floor(secs / 86400);
-      const hours = Math.floor((secs % 86400) / 3600);
-      const minutes = Math.floor((secs % 3600) / 60);
-      const seconds = secs % 60;
-
-      document.getElementById('days').textContent = days.toString().padStart(2, '0');
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-    }
-
-    // Hall of Shame - List of exploiters
-const exploiters = [
-    "1000erdan",
-    "1011erdan",
-    "12123robl_4",
-    "13travis",
-    "1X1N0M38",
-    "1mpureTh0ughts",
-    "1x1x1x1_20255",
-    "2010erdan",
-    "2020erdan",
-    "2021erdan",
-    "2022erdan",
-    "2023erdan",
-    "2026erdan",
-    "2032erdan",
-    "2040erdan",
-    "2043erdan",
-    "21dumplings5",
-    "6Y8RLr7o3VemS4",
-    "Adana098766t",
-    "Adventinal",
-    "Alex_peanuts1234",
-    "Alex_peanuts4",
-    "Alex_peanutsalt",
-    "Altobastar",
-    "AmazonPrimeExclusive",
-    "Awesomedude99551",
-    "BDRthermea",
-    "BaconN_262",
-    "Bigboykid2244",
-    "BonkTheFelon",
-    "BusinessApe",
-    "CIobeY6",
-    "CharieB123",
-    "Charl0tt3_Craft2012",
-    "Charl0tt3_Craft2015",
-    "ChromeExclusive",
-    "ClobeY6",
-    "Contained_Monster",
-    "Ctalysta",
-    "DEVILCRUSED666",
-    "Datboikeemy223",
-    "Delta_ExecutorYield",
-    "DicsHui",
-    "DimitrisPapp",
-    "Donp100",
-    "Eqvuniox",
-    "FACILITY787",
-    "FireSINKY",
-    "Gamerman101010",
-    "HAYMANYOU0",
-    "HENCHMENRULES",
-    "HowToProgramBASIC",
-    "IostIone",
-    "JOB_JakeIsSigma",
-    "JackPrime0",
-    "Jackprime0",
-    "Juan_Mexic",
-    "KEWLAlDS",
-    "Kahootbot11",
-    "Kiro_Bad",
-    "L0r9m",
-    "LOCORUSSO",
-    "Landry1227",
-    "Levi291000K",
-    "LocalBorderHopper559",
-    "Luck_Op11",
-    "Lucky779959",
-    "Mast3rN0va2024",
-    "MasterCommandcheat",
-    "MendanSmiles6",
-    "MidnightTokyoRace99",
-    "Mingobog",
-    "Mishakapusha",
-    "Moon_Cricke0t",
-    "MrAtlea",
-    "OperativeBoy3",
-    "Pastomyacisfrank2008",
-    "Plixtz9685",
-    "PotatoCeleron",
-    "ProBeyGIDA123",
-    "REALDA_GREEK",
-    "RONENFORTOP",
-    "RegionASDu",
-    "Roblox_Agradecido",
-    "Roblox_Agradecido1",
-    "Robloxian895940995",
-    "Santiago_Fernandex12",
-    "Shandale_Binkkle",
-    "Slava2015yge",
-    "Soviet_main",
-    "StingerAaron208",
-    "TEMPTED2DIE",
-    "TenBrain",
-    "TheBlueShadow2502",
-    "TheDualSword",
-    "TheOdd1sOut232323232",
-    "TheUnknown_voids",
-    "TwitterExclusive",
-    "Undleraged_Minor",
-    "VShxrk1",
-    "VirtualAbstraction",
-    "Void_C0IN",
-    "WEETGKC123",
-    "XTCN8361",
-    "Xavier73539727",
-    "ZoProUnlimitedRX1234",
-    "aakpaksosmms",
-    "abdo_vipgn",
-    "aceskeysss",
-    "adamCute99",
-    "ak47aad",
-    "alex_peanuts0",
-    "alex_peanuts1",
-    "alex_peanuts2",
-    "alex_peanuts4F",
-    "alex_peanuts7c",
-    "alex_peanutsP1",
-    "alex_peanutsVe",
-    "alex_peanutsaY",
-    "alex_peanutsav",
-    "alex_peanutse",
-    "alex_peanutseM",
-    "alex_peanutsne",
-    "alex_peanutss",
-    "alex_peanutstH",
-    "all_busesrawesome",
-    "allofgames",
-    "am_tbs",
-    "ambigfan_digito7",
-    "amchina3",
-    "amfrom_filipino",
-    "amfrom_german",
-    "amir_delivery153",
-    "bhfhuth",
-    "bloxy_gaming27",
-    "brourblackstfu",
-    "bryleisgood1",
-    "burninghole58",
-    "chernulya123",
-    "cneg12342",
-    "corvus_111",
-    "cuong_real19",
-    "dandypro43",
-    "datboikeemy2",
-    "debil_andrew",
-    "degitobo2m",
-    "diamondwasfound543",
-    "diduy_Drake",
-    "dsaser",
-    "edugon1293",
-    "elmanito629",
-    "entity_prisonlife",
-    "epic_war25",
-    "erdancasabuena5",
-    "excrucism",
-    "ezgamerboi124",
-    "finallytheyfoundout",
-    "flappy_bird85",
-    "foltynisthebestpls",
-    "funzairs",
-    "gamesgirl5528",
-    "gelo1234kil",
-    "gigapipa0",
-    "godzarrival",
-    "greetyouhimeidono2",
-    "gustcaq",
-    "heilt_jack",
-    "huellbabinox",
-    "hyfiehei",
-    "iloveroblxbuilderman",
-    "imadethisaccountnowA",
-    "josezillaaaa",
-    "juanito_juanito1",
-    "jyegew07",
-    "k_xyp",
-    "karker121_me",
-    "kawaiiYunnychan",
-    "lam_superman1",
-    "llove_ttl",
-    "mBPrAGkUfrz",
-    "malhor_123044",
-    "mexican_bob3",
-    "mmm0nster_killer",
-    "ngtoanteemo5",
-    "ngtoanteemo50",
-    "nickilw0",
-    "nma1ka01",
-    "nootnoot30885",
-    "omaranan",
-    "p1i7tsfct0hfqgufzsda",
-    "player_183054",
-    "player_28366",
-    "reison54",
-    "rhrinosbudgu",
-    "shoto_playdandy",
-    "shoto_playgo",
-    "shotoako_playfisch",
-    "spaceman_96",
-    "sus7841611",
-    "thestrongest_fimoz",
-    "timuka12004",
-    "tonea_cri",
-    "unragedlast102",
-    "usual6704",
-    "uwfmsv122961",
-    "vault_guardian4",
-    "vault_guardian7",
-    "vinnyballrubber",
-    "wojtekdddhh",
-    "x1Luv4me",
-    "yesthankyousomuch0",
-    "yujunhao456",
-    "zombiesteve853",
-];
-
-
-    function displayExploiters() {
-      const listElement = document.getElementById('exploiters-list');
-      
-      exploiters.forEach(exploiter => {
-        const exploiterElement = document.createElement('div');
-        exploiterElement.className = 'exploiter';
-        exploiterElement.innerHTML = `
-          <span class="clown-emoji">🤡</span>
-          <span>${exploiter}</span>
-        `;
-        listElement.appendChild(exploiterElement);
-      });
-    }
-
-    // Initialize everything
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-    displayExploiters();
-  </script>
+    </script>
 </body>
 </html>
