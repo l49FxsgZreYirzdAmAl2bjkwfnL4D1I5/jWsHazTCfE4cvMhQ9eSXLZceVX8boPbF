@@ -6,7 +6,7 @@ const fs = require('fs')
 const path = require('path')
 
 const app = express()
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ dest: 'upload/' })
 
 app.post('/upload', upload.single('media'), (req, res) => {
   const filePath = req.file.path
